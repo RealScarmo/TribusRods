@@ -36,7 +36,7 @@ public class UpgradeGUI extends GUI {
                 "§8[" + progessBar(e, i) + "§8]",
                 "",
                 "§7Level §8» §e" + Core.getRodEnchantManager().getLevel(e, i) + "/" + e.getMaxLevel(),
-                "§7Kostnad §8» " + e.getCostPerUpgrade() + " Tokens",
+                "§7Kostnad §8» " + cost(e, i),
                 "",
         };
 
