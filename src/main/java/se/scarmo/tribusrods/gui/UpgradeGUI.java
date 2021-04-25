@@ -44,7 +44,7 @@ public class UpgradeGUI extends GUI {
 
     private String progessBar(RodEnchant e, ItemStack i) {
 
-        int count = 30;
+        int count = 32;
 
         float percent = (float) Core.getRodEnchantManager().getLevel(e, i) / e.getMaxLevel();
         int progressBars = (int) (count * percent);
