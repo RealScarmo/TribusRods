@@ -98,6 +98,7 @@ public class Core extends JavaPlugin {
                 "",
                 "§6Uppgraderingar:"
         ));
+        //uuga buuga
 
         meta.spigot().setUnbreakable(true);
 
