@@ -18,6 +18,7 @@ public abstract class GUI {
     private String title;
     private boolean fill;
     private Inventory inv;
+    private String fefe;
 
     public GUI(String internalName, String title, int rows, boolean fill) {
 
