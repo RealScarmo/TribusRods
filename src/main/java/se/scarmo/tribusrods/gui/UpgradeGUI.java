@@ -36,7 +36,7 @@ public class UpgradeGUI extends GUI {
                 "§8[" + progessBar(e, i) + "§8]",
                 "",
                 "§7Level §8» §e" + Core.getRodEnchantManager().getLevel(e, i) + "/" + e.getMaxLevel(),
-                "§7Kostnad §8» §e" + e.getCostPerUpgrade() + " Tokens",
+                "§7Kostnad §8» " + e.getCostPerUpgrade() + " Tokens",
                 "",
         };
 
@@ -51,6 +51,16 @@ public class UpgradeGUI extends GUI {
 
         return Strings.repeat("§a" + "|", progressBars)
                 + Strings.repeat("§8" + "|", count - progressBars);
+
+    }
+
+    private String cost(RodEnchant e, ItemStack i) {
+
+        if (Core.getRodEnchantManager().getLevel(e, i) == e.getMaxLevel()) {
+            return "§cN/A Tokens";
+        } else {
+            return "§e" + e.getCostPerUpgrade() + " Tokens";
+        }
 
     }
 
