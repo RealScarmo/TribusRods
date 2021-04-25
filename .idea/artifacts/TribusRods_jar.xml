@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TribusRods:jar">
+    <output-path>$PROJECT_DIR$/../../TribusMC/Plugin Exports</output-path>
+    <root id="archive" name="TribusRods.jar">
+      <element id="module-output" name="TribusRods" />
+    </root>
+  </artifact>
+</component>

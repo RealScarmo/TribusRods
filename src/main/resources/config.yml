@@ -1,0 +1,18 @@
+darkzone-world: "DarkZone"
+drops:
+  money: 50000
+  tokens: 25000
+  spawners:
+    '0':
+      commands:
+        - 'stacker give %player% spawner iron_golem 1'
+        - 'ebc &e%player% &7fick precis en &eIron Golem Spawner &7genom att fiska i &cDarkzone&7!'
+    '1':
+      commands:
+        - 'stacker give %player% spawner villager 1'
+        - 'ebc &e%player% &7fick precis en &eVillager Spawner &7genom att fiska i &cDarkzone&7!'
+    '2':
+      commands:
+        - 'stacker give %player% spawner creeper 1'
+        - 'ebc &e%player% &7fick precis en &eCreeper Spawner &7genom att fiska i &cDarkzone&7!'
+  gear:

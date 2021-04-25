@@ -1,0 +1,12 @@
+name: TribusRods
+main: se.scarmo.tribusrods.Core
+version: 1.0.0
+author: Scarmo
+commands:
+  rod:
+    aliases:
+      - fishingrod
+      - upgradeablerod
+  addrodgear:
+depend:
+  - PlaceholderAPI
