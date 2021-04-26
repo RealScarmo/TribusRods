@@ -18,6 +18,13 @@ import java.util.*;
 
 public class PlayerFishListener implements Listener {
 
+    private Core core;
+
+    public PlayerFishListener(Core core) {
+        this.core = core;
+    }
+
+
     @EventHandler
     public void onFish(PlayerFishEvent e) {
 
@@ -26,7 +33,7 @@ public class PlayerFishListener implements Listener {
         if (p.getItemInHand() == null) return;
         if (!Core.getInstance().isRod(p.getItemInHand())) return;
 
-        if (!p.getWorld().getName().equals(Core.getInstance().worldName)) {
+        if (!p.getWorld().getName().equals(core.worldName)) {
             e.setCancelled(true);
             p.sendMessage("§6§lTribusMC §8» §cDu kan endast använda denna fishing rod i Darkzone.");
             return;
@@ -41,8 +48,8 @@ public class PlayerFishListener implements Listener {
 
         if (e.getCaught() == null) return;
 
-        p.sendMessage("§6§lTribusMC §8» §7Du fick §e" + Core.getInstance().econ.format(Core.getInstance().moneyDrop) + "§7.");
-        Core.getInstance().econ.depositPlayer(p, Core.getInstance().moneyDrop);
+        p.sendMessage("§6§lTribusMC §8» §7Du fick §e" + core.econ.format(core.moneyDrop) + "§7.");
+        core.econ.depositPlayer(p, Core.getInstance().moneyDrop);
         e.setExpToDrop(0);
 
         switch (dropType) {
@@ -65,7 +72,7 @@ public class PlayerFishListener implements Listener {
                 if (Core.getRodEnchantManager().getLevel(RodEnchant.TOKEN_BOOST, p.getItemInHand()) * 2 >= dropChance) {
                     e.getCaught().remove();
                     p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
-                    Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "tokens give " + p.getName() + " " + Core.getInstance().tokensDrop);
+                    Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "tokens give " + p.getName() + " " + core.tokensDrop);
                 }
 
                 return;
@@ -88,7 +95,7 @@ public class PlayerFishListener implements Listener {
 
         Random r = new Random();
 
-        List<String> commands = Core.getInstance().spawners.get(r.nextInt(Core.getInstance().spawners.size()));
+        List<String> commands = core.spawners.get(r.nextInt(core.spawners.size()));
 
         for (String s : commands) {
             Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), s.replace("%player%", p.getName()));
@@ -98,8 +105,8 @@ public class PlayerFishListener implements Listener {
 
     private void randomGear(Player p) {
 
-        int c = new Random().nextInt(Core.getInstance().items.size());
-        ItemStack item = Core.getInstance().items.get(c);
+        int c = new Random().nextInt(core.items.size());
+        ItemStack item = core.items.get(c);
 
         if (p.getInventory().firstEmpty() == -1) {
             p.getWorld().dropItem(p.getLocation(), item);

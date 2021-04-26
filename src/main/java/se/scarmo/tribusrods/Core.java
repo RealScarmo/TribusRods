@@ -1,5 +1,6 @@
 package se.scarmo.tribusrods;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -54,7 +55,7 @@ public class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerInteractListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
         getServer().getPluginManager().registerEvents(new CommandPreprocessListener(), this);
-        getServer().getPluginManager().registerEvents(new PlayerFishListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerFishListener(this), this);
 
         setFreshRod();
 
