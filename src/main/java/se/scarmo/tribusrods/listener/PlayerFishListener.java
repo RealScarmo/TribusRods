@@ -43,7 +43,7 @@ public class PlayerFishListener implements Listener {
         int dropChance = new Random().nextInt(101);
 
         if (e.getState() == PlayerFishEvent.State.FISHING) {
-            setBiteTime(e.getHook(), 480 - (Core.getRodEnchantManager().getLevel(RodEnchant.SEVEN_SEAS, p.getItemInHand()) * 22));
+            setBiteTime(e.getHook(), catchTicks(p));
         }
 
         if (e.getCaught() == null) return;
@@ -143,6 +143,11 @@ public class PlayerFishListener implements Listener {
         }
 
         fishCatchTime.setAccessible(false);
+
+    }
+
+    private int catchTicks(Player p) {
+        return 400 - (Core.getRodEnchantManager().getLevel(RodEnchant.SEVEN_SEAS, p.getItemInHand()) * 18);
     }
 
 }

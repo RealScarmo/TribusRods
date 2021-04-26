@@ -9,6 +9,8 @@
         <module name="TribusRods" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8" />
+    <bytecodeTargetLevel>
+      <module name="TribusRods" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
