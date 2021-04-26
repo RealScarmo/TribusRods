@@ -1,6 +1,6 @@
 darkzone-world: "DarkZone"
 drops:
-  money: 50000
+  money: 10000
   tokens: 25000
   spawners:
     '0':

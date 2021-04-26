@@ -1,5 +1,6 @@
 package se.scarmo.tribusrods;
 
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -8,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import se.scarmo.tribusrods.command.AddGearCommand;
 import se.scarmo.tribusrods.command.RodCommand;
@@ -25,6 +27,8 @@ public class Core extends JavaPlugin {
     private static Core core;
     private static RodEnchantManager rodEnchantManager;
 
+    public Economy econ = null;
+
     public ItemStack freshRod;
 
     public String worldName;
@@ -41,6 +45,8 @@ public class Core extends JavaPlugin {
 
         core = this;
         rodEnchantManager = new RodEnchantManager();
+
+        setupEconomy();
 
         getCommand("rod").setExecutor(new RodCommand());
         getCommand("addrodgear").setExecutor(new AddGearCommand());
@@ -125,6 +131,18 @@ public class Core extends JavaPlugin {
 
         new UpgradeGUI(p, i).open(p);
 
+    }
+
+    private boolean setupEconomy() {
+        if (getServer().getPluginManager().getPlugin("Vault") == null) {
+            return false;
+        }
+        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        if (rsp == null) {
+            return false;
+        }
+        econ = rsp.getProvider();
+        return econ != null;
     }
 
 }

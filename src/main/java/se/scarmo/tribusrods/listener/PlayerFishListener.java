@@ -40,6 +40,9 @@ public class PlayerFishListener implements Listener {
         }
 
         if (e.getCaught() == null) return;
+
+        p.sendMessage("§6§lTribusMC §8» §7Du fick §e" + Core.getInstance().econ.format(Core.getInstance().moneyDrop) + "§7.");
+        Core.getInstance().econ.depositPlayer(p, Core.getInstance().moneyDrop);
         e.setExpToDrop(0);
 
         switch (dropType) {
